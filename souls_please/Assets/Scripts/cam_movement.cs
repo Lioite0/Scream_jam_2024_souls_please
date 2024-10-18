@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class cam_movement : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float sensitivity = 2f;
     float cameraVertRotation = 0f;
     float cameraHorizRotation;
@@ -14,7 +13,6 @@ public class cam_movement : MonoBehaviour
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (UI_Manager.isPaused)
