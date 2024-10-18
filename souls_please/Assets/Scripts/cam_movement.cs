@@ -17,13 +17,17 @@ public class cam_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float inputX = Input.GetAxis("Mouse X") * sensitivity;
-        float inputY = Input.GetAxis("Mouse Y") * sensitivity;
+        if (UI_Manager.isPaused)
+        {
+            float inputX = Input.GetAxis("Mouse X") * sensitivity;
+            float inputY = Input.GetAxis("Mouse Y") * sensitivity;
 
-    cameraVertRotation -= inputY;
-    cameraVertRotation = Mathf.Clamp(cameraVertRotation, -90f, 90f);
-    
-    cameraHorizRotation += inputX;
-    transform.rotation = Quaternion.Euler(cameraVertRotation, cameraHorizRotation, 0);
-    }
+            cameraVertRotation -= inputY;
+            cameraVertRotation = Mathf.Clamp(cameraVertRotation, -90f, 90f);
+
+            cameraHorizRotation += inputX;
+            transform.rotation = Quaternion.Euler(cameraVertRotation, cameraHorizRotation, 0);
+        }
+        else return;           
+    }       
 }

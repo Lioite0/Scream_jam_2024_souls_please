@@ -19,5 +19,9 @@ public class Timer : MonoBehaviour
             currentTime -= Time.deltaTime;
             timerText.text = Mathf.Floor(currentTime).ToString("00");
         }
+
+        if (currentTime == 0f)
+        {
+        }
     }
 }
