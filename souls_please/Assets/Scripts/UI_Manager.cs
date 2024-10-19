@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -22,6 +23,8 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
+        NextDayPanelAppear();
+        resultPanel.SetActive(true);
         gameMechanicScript = GetComponent<Game_Mechanic>();
         newDaybtn.onClick.AddListener(gameMechanicScript.NewDay);
     }
@@ -32,6 +35,14 @@ public class UI_Manager : MonoBehaviour
             settingPanel.SetActive(!settingPanel.activeSelf);
             isPaused = !settingPanel.activeSelf;
             PauseGame();
+        }
+        if (resultPanel.activeSelf)
+        {
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                resultPanel.SetActive(false);
+            }
+        );
         }
     }
 
@@ -45,5 +56,15 @@ public class UI_Manager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    public void NextDayPanelAppear()
+    {
+        StartCoroutine(NextDayPanelDelay());
+    }
+
+    IEnumerator NextDayPanelDelay()
+    {
+
     }
 }

@@ -34,13 +34,15 @@ public class Game_Mechanic : MonoBehaviour
 
     private void Update()
     {
-        InstantiateSouls();
-        TimerStart();
         //Find all the soul in a scene
-        soulNumb = GameObject.FindGameObjectsWithTag("Souls");
+        //soulNumb = GameObject.FindGameObjectsWithTag("Souls");
+        if (completedQuota = false || currentTime > 0)
+        {
+            TimerStart();
+        }
     }
 
-    void InstantiateSouls()
+    /*void InstantiateSouls()
     {
         //Instantiate Souls 
         for (int i = 0; i < currentQuota; i++)
@@ -51,7 +53,7 @@ public class Game_Mechanic : MonoBehaviour
                 GameObject instantiateSoul = Instantiate(soulPref, position, Quaternion.identity);
             }
         }
-    }
+    }*/
     void TimerStart()
     {
         if (currentTime > 0f)
@@ -63,12 +65,8 @@ public class Game_Mechanic : MonoBehaviour
 
     public void NewDay()
     {
-        uiManagerScript.resultPanel.SetActive(true);
-        DOVirtual.DelayedCall(1f, () =>
-        {
-            uiManagerScript.resultPanel.SetActive(false);
-        }
-            );
+        // InstantiateSouls();
+        
         uiManagerScript.dayText.text = ("Day" + dayNumber);
         dayNumber++;
         completedQuota = false;
