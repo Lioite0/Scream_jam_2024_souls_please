@@ -65,6 +65,6 @@ public class UI_Manager : MonoBehaviour
 
     IEnumerator NextDayPanelDelay()
     {
-
+        return null;
     }
 }
