@@ -7,9 +7,10 @@ using UnityEngine;
 public class Game_Mechanic : MonoBehaviour
 {
     //Assign day and quota perday
+    [Header("GameValues")]
     public int startQuota=15;
     public int dayQuota = 10;
-    private int currentQuota;
+    public static int currentQuota;
     private int dayNumber = 1;
 
     //Assign Timer
@@ -22,9 +23,14 @@ public class Game_Mechanic : MonoBehaviour
 
     private UI_Manager uiManagerScript;
 
-    public GameObject soulPref;
+    [Header("GameObjects")]
+    public GameObject[] soulPref;
+    public Transform spawnPoint;
+    public Transform destinationPoint;
     private GameObject[] soulNumb;
-    private float spacing;
+
+
+    private Vector3 spacing = new Vector3(0.5f, 0f, 0f);
 
     private void Start()
     {
@@ -35,9 +41,14 @@ public class Game_Mechanic : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(completedQuota);
         //Find all the soul in a scene
-        //soulNumb = GameObject.FindGameObjectsWithTag("Souls");
-        
+        soulNumb = GameObject.FindGameObjectsWithTag("Souls");
+
+        if (soulNumb.Length == 0 && !completedQuota && startGame)
+        {
+            NewDay();
+        }
         if (!completedQuota && currentTime > 0 && startGame)
         {
             TimerStart();
@@ -49,31 +60,24 @@ public class Game_Mechanic : MonoBehaviour
         }
     }
 
-    /*void InstantiateSouls()
-    {
-        //Instantiate Souls 
-        for (int i = 0; i < currentQuota; i++)
-        {
-            if (soulNumb.Length < 10)
-            {
-                Vector3 position = new Vector3(i * spacing, 0, 0);
-                GameObject instantiateSoul = Instantiate(soulPref, position, Quaternion.identity);
-            }
-        }
-    }*/
     public void TimerStart()
     {
-        if (currentTime > 0f)
-        {
-            currentTime -= Time.deltaTime;
-            timerText.text = Mathf.Floor(currentTime).ToString("00");
-        }
+
+         currentTime -= Time.deltaTime;
+         timerText.text = Mathf.Floor(currentTime).ToString("00");
     }
 
     public void NewDay()
     {
         //Instantiate Souls in Newday
-        // InstantiateSouls();      
+            for (int i = 0; i < currentQuota; i++)
+            {
+                int randomIndex = Random.Range(0, soulPref.Length);
+                Vector3 pos = spawnPoint.position + i * spacing;
+                Debug.Log("Pos:" + pos);
+                Debug.Log("soulPref's Length" + soulPref.Length);
+                Instantiate(soulPref[randomIndex], pos, Quaternion.identity);
+            }
         uiManagerScript.dayText.text = ("Day" + dayNumber);
         dayNumber++;
         completedQuota = false;

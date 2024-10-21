@@ -7,14 +7,15 @@ public class cam_movement : MonoBehaviour
     public float sensitivity = 2f;
     float cameraVertRotation = 0f;
     float cameraHorizRotation;
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    private Game_Mechanic manager;
 
     void Update()
     {
+        if (Game_Mechanic.startGame)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         if (UI_Manager.isPaused)
         {
             float inputX = Input.GetAxis("Mouse X") * sensitivity;

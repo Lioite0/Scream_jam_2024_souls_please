@@ -10,13 +10,15 @@ public class UI_Manager : MonoBehaviour
     [Header("Panels")]
     public GameObject settingPanel;
     public GameObject resultPanel;
+    public GameObject startPanel;
 
     [Header("Text")]
     public TMP_Text dayText;
-
+    public TMP_Text quotaText;
 
     [Header("Buttons")]
-    public Button newDaybtn;
+    public Button newDayBtn;
+    public Button startBtn;
 
     public static bool isPaused = true;
     private Game_Mechanic gameMechanicScript;
@@ -26,7 +28,9 @@ public class UI_Manager : MonoBehaviour
         NextDayPanelAppear();
         resultPanel.SetActive(true);
         gameMechanicScript = GetComponent<Game_Mechanic>();
-        newDaybtn.onClick.AddListener(gameMechanicScript.NewDay);
+        //newDayBtn.onClick.AddListener(gameMechanicScript.NewDay);
+        startBtn.onClick.AddListener(StartGame);
+        
     }
     void Update()
     {
@@ -44,8 +48,14 @@ public class UI_Manager : MonoBehaviour
             }
         );
         }
+        quotaText.text = Game_Mechanic.currentQuota.ToString();
     }
 
+    void StartGame()
+    {
+        Game_Mechanic.startGame = true;
+        Destroy(startPanel);
+    }
     void PauseGame() 
     {
         if (settingPanel.activeSelf)
@@ -60,11 +70,7 @@ public class UI_Manager : MonoBehaviour
 
     public void NextDayPanelAppear()
     {
-        StartCoroutine(NextDayPanelDelay());
     }
 
-    IEnumerator NextDayPanelDelay()
-    {
-        return null;
-    }
+
 }
