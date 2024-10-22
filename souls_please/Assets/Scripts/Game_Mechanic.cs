@@ -30,7 +30,7 @@ public class Game_Mechanic : MonoBehaviour
     private GameObject[] soulNumb;
 
 
-    private Vector3 spacing = new Vector3(0.5f, 0f, 0f);
+    private Vector3 spacing = new Vector3(0f, 0f, 0.5f);
 
     private void Start()
     {

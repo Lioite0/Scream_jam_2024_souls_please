@@ -45,14 +45,13 @@ public class UI_Manager : MonoBehaviour
             {
                 if (isZoomed)
                 {
-                    sheet.transform.SetParent(null);
                     sheet.transform.rotation = Quaternion.Euler(0, 180, 0);
                     sheet.transform.position = new Vector3(-0.588f, 1.03f, -8.75f);
                 }
                 else
                 {
-                    sheet.transform.SetParent(mainCam.transform);
-                    sheet.transform.rotation = Quaternion.Euler(60, 180, 15);
+                    sheet.transform.rotation = Quaternion.Euler(90, 180, 0);
+                    sheet.transform.position = new Vector3(-0.19f, 1.99f, -9.61f);
                 }
                 isZoomed = !isZoomed;
             }

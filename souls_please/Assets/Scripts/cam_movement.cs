@@ -5,27 +5,19 @@ using UnityEngine;
 public class cam_movement : MonoBehaviour
 {
     public float sensitivity = 2f;
-    float cameraVertRotation = 0f;
-    float cameraHorizRotation;
+    private Vector3 lastMousePos;
     private Game_Mechanic manager;
 
     void Update()
     {
-        if (Game_Mechanic.startGame)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        Vector3 delta = Input.mousePosition - lastMousePos;
+        float rotationY = delta.y * sensitivity;
+        float rotationX = delta.x *sensitivity;
         if (UI_Manager.isPaused)
         {
-            float inputX = Input.GetAxis("Mouse X") * sensitivity;
-            float inputY = Input.GetAxis("Mouse Y") * sensitivity;
+            transform.Rotate(new Vector3(rotationX, rotationY, 0));
 
-            cameraVertRotation -= inputY;
-            cameraVertRotation = Mathf.Clamp(cameraVertRotation, -90f, 90f);
-
-            cameraHorizRotation += inputX;
-            transform.rotation = Quaternion.Euler(cameraVertRotation, cameraHorizRotation, 0);
+            lastMousePos = Input.mousePosition;
         }
         else return;           
     }       
