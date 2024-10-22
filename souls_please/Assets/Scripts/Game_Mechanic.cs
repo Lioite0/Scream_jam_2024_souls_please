@@ -41,7 +41,6 @@ public class Game_Mechanic : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(completedQuota);
         //Find all the soul in a scene
         soulNumb = GameObject.FindGameObjectsWithTag("Souls");
 

@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &67817036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2673621875685691675, guid: c3461209449a58041be7d21125bb7bed, type: 3}
+  m_PrefabInstance: {fileID: 2146389669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &188181401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,9 +1907,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2037618654618916280, guid: 1b62ea7d71232ee49b11211215e7b4b3, type: 3}
+      propertyPath: sheet
+      value: 
+      objectReference: {fileID: 67817036}
+    - target: {fileID: 2037618654618916280, guid: 1b62ea7d71232ee49b11211215e7b4b3, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 2037618654618916280, guid: 1b62ea7d71232ee49b11211215e7b4b3, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 3905617700030792790, guid: 1b62ea7d71232ee49b11211215e7b4b3, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905617700030792790, guid: 1b62ea7d71232ee49b11211215e7b4b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

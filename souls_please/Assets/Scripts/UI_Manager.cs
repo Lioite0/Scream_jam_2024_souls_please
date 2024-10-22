@@ -7,10 +7,12 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
-    [Header("Panels")]
+    [Header("Objects")]
     public GameObject settingPanel;
     public GameObject resultPanel;
     public GameObject startPanel;
+    public GameObject sheet;
+    public Camera mainCam;
 
     [Header("Text")]
     public TMP_Text dayText;
@@ -22,7 +24,8 @@ public class UI_Manager : MonoBehaviour
 
     public static bool isPaused = true;
     private Game_Mechanic gameMechanicScript;
-
+    private bool isZoomed = false;
+    private Vector3 originalPos;
     void Start()
     {
         NextDayPanelAppear();
@@ -30,10 +33,29 @@ public class UI_Manager : MonoBehaviour
         gameMechanicScript = GetComponent<Game_Mechanic>();
         //newDayBtn.onClick.AddListener(gameMechanicScript.NewDay);
         startBtn.onClick.AddListener(StartGame);
-        
     }
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit) && hit.transform.gameObject == sheet)
+            {
+                if (isZoomed)
+                {
+                    sheet.transform.SetParent(null);
+                    sheet.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    sheet.transform.position = new Vector3(-0.588f, 1.03f, -8.75f);
+                }
+                else
+                {
+                    sheet.transform.SetParent(mainCam.transform);
+                    sheet.transform.rotation = Quaternion.Euler(60, 180, 15);
+                }
+                isZoomed = !isZoomed;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             settingPanel.SetActive(!settingPanel.activeSelf);
@@ -56,6 +78,7 @@ public class UI_Manager : MonoBehaviour
         Game_Mechanic.startGame = true;
         Destroy(startPanel);
     }
+
     void PauseGame() 
     {
         if (settingPanel.activeSelf)

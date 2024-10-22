@@ -13,9 +13,6 @@ public class Soul_Behaviour : MonoBehaviour
     }
     private void Update()
     {
-        if (gameMachanicScript.destinationPoint != null)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, gameMachanicScript.destinationPoint.position, speed * Time.deltaTime);
-        }
+          transform.position = Vector3.MoveTowards(transform.position, gameMachanicScript.destinationPoint.position, speed * Time.deltaTime);
     }
 }
