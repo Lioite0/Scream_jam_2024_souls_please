@@ -8,11 +8,7 @@ public class text_randomiser_names : MonoBehaviour
     // Start is called before the first frame update
 
     public TMP_Text text;
-
-    
-    void Start()
-    {
-        System.Random random = new System.Random();
+ System.Random random = new System.Random();
         string[] namesFem = new string[]
         {
             "Elsie",
@@ -84,15 +80,22 @@ public class text_randomiser_names : MonoBehaviour
             "Giles",
             "Miyazaki"
         };
-        List<string[]> first = new List<string[]>();
+        
+    
+    void Start()
+    {
+       
+        randomize();
+    }
+
+    void randomize(){
+List<string[]> first = new List<string[]>();
         first.Add(namesFem);
         first.Add(namesMasc);
        int randint = random.Next(first.Count);
        string randName = first[randint][UnityEngine.Random.Range(0, first[randint].Length)];
         text.text = randName + " " + namesLast[UnityEngine.Random.Range(0, namesLast.Length)];
-
     }
-
     // Update is called once per frame
     void Update()
     {

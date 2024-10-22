@@ -2,16 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class text_randomiser : MonoBehaviour
 {
     public TMP_Text text;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        string[] neutralList = new string[]
+string[] neutralList = new string[]
         {
             "A musical instrument",
             "My room always smells nice",
@@ -195,13 +192,25 @@ public class text_randomiser : MonoBehaviour
             "Him to call me back",
             "I hope I get that job"
         };
-        string randomWord = neutralList[UnityEngine.Random.Range(0, neutralList.Length)];
-        text.text = randomWord;
+    // Start is called before the first frame update
+    void Start()
+    {
+        randomize();
     }
 
+    void randomize(){
+        List<string[]> requestList = new List<string[]>();
+        System.Random random = new System.Random();
+        requestList.Add(neutralList);
+        requestList.Add(goodList);
+        requestList.Add(badList);
+        int randint = random.Next(requestList.Count);
+        string randomRequest = requestList[randint][UnityEngine.Random.Range(0, requestList[randint].Length)];
+        text.text = randomRequest;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

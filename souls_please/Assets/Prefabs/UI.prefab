@@ -522,7 +522,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7529055539386874262}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5013129136706344010, guid: c3461209449a58041be7d21125bb7bed, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: BroadcastMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: '"randomize"'
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3447299292125871459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,7 +2733,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7224191071597153578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5013129136706344010, guid: c3461209449a58041be7d21125bb7bed, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: BroadcastMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: randomize
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9194679598710724601
 GameObject:
   m_ObjectHideFlags: 0

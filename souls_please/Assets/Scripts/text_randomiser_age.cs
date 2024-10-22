@@ -10,11 +10,13 @@ public class text_randomiser_age : MonoBehaviour
     public TMP_Text text;
     void Start()
     {
-        int randAge = random.Next(10, 101);
+       randomize();
+    }
+    void randomize(){
+ int randAge = random.Next(10, 101);
 
         text.text = randAge.ToString();
     }
-
     // Update is called once per frame
     void Update()
     {
