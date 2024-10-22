@@ -26,6 +26,7 @@ public class UI_Manager : MonoBehaviour
     private Game_Mechanic gameMechanicScript;
     private bool isZoomed = false;
     private Vector3 originalPos;
+
     void Start()
     {
         NextDayPanelAppear();

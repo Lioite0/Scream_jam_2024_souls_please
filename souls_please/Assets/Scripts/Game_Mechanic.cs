@@ -73,8 +73,6 @@ public class Game_Mechanic : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, soulPref.Length);
                 Vector3 pos = spawnPoint.position + i * spacing;
-                Debug.Log("Pos:" + pos);
-                Debug.Log("soulPref's Length" + soulPref.Length);
                 Instantiate(soulPref[randomIndex], pos, Quaternion.identity);
             }
         uiManagerScript.dayText.text = ("Day" + dayNumber);
