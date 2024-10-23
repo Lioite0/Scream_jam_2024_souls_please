@@ -13,6 +13,8 @@ public class Game_Mechanic : MonoBehaviour
     public static int currentQuota;
     private int dayNumber = 1;
 
+    public int quotaProgress = 0;
+
     //Assign Timer
     public TMP_Text timerText;
     private float duration = 300f;
@@ -48,6 +50,9 @@ public class Game_Mechanic : MonoBehaviour
         {
             NewDay();
         }
+        if (completedQuota){
+            NewDay();
+        }
         if (!completedQuota && currentTime > 0 && startGame)
         {
             TimerStart();
@@ -64,6 +69,13 @@ public class Game_Mechanic : MonoBehaviour
 
          currentTime -= Time.deltaTime;
          timerText.text = Mathf.Floor(currentTime).ToString("00");
+    }
+
+    public void AddQuota(){
+        quotaProgress += 1;
+        if (quotaProgress == currentQuota){
+            completedQuota = true;
+        }
     }
 
     public void NewDay()
